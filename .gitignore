@@ -22,3 +22,4 @@ yarn-error.log*
 
 # : comments
 /src/assets
+/node_modules
