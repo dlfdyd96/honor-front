@@ -1,19 +1,19 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import axios from 'axios'
 
 Vue.use(Vuex);
-
-
 
 export const store = new Vuex.Store({
     state: {
         MenuMode: 'all',
         isPanelOpen : false,
         contributors : [
-            {season:'2019 Fall 기부자', names: 'OOO OOO'},
-            {season:'2019 Spring 기부자', names:'신호균, 이용환, 김진한, 김귀곤, 구정호, 김선아, 이희란, 김상민, 김은희, 김문정, 정현욱, 김동혁, 조유근, 이승현, 오현숙, 김지희, 최혜정, 김효진'},
-            {season:'2018 Fall 기부자', names:'조진형, 이지수, 김경모, 차우창, 이종환, 김선아, 구정호, 조성주, 권기연, 김혜경'},
+            {season:'2019 Fall 기부자', peoples: []},
+            {season:'2019 Spring 기부자', peoples: []},
+            {season:'2018 Fall 기부자', peoples: []},
         ],
+        temp: ['abcd']
     },
     getters:{
         getPanelIs(state) {
@@ -30,5 +30,41 @@ export const store = new Vuex.Store({
         togglePanel(state) {
             state.isPanelOpen = !state.isPanelOpen;
         },
+        setContributors(state, data){
+            this.state.temp = data;
+            this.state.contributors[0].peoples = [];
+            this.state.contributors[1].peoples = [];
+            this.state.contributors[2].peoples = [];
+            console.log('set contributors success ' + data);
+            for(let i = 0 ; i < data.length ; i++){
+                console.log('data[' + i  + ']: ' + data[i].Season);
+                switch(data[i].Season){
+                    case "19-3":
+                        state.contributors[0].peoples.push(data[i]);
+                        break;
+                    case "19-1":
+                        state.contributors[1].peoples.push(data[i]);
+                        break;
+                    case "18-3":
+                        state.contributors[2].peoples.push(data[i]);
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+    },
+    actions : {
+        getContributorsServer(context){
+            axios.get('http://202.31.202.253:5000/donator')
+            .then((response) => {
+                this.commit('setContributors',response.data);
+                console.log('request success '+response);
+              })
+            .catch(response => {
+                console.log('tlqkftlqkf');
+                console.log(response)
+            });
+        }
     }
 });

@@ -6,7 +6,7 @@ import Spring_2019 from '@/components/2019Spring'
 import Fall_2019 from '@/components/2019Fall'
 import PlanModel from '@/components/PlanModel'
 import BusinessModel from '@/components/Business_model'
-import List_of_ontributors from '@/components/Listofontributors'
+import Contributors from '@/components/Contributors'
 import Product_Item from '@/components/Product_Item'
 import LoginForm from '@/components/LoginForm'
 import JoinForm from '@/components/JoinForm'
@@ -51,8 +51,8 @@ export default new Router({
     },
     {
       path: '/contributor',
-      name: 'List_of_ontributors',
-      component: List_of_ontributors
+      name: 'Contributors',
+      component: Contributors
     },
     {
       path: '/fall19',
