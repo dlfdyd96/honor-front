@@ -7,8 +7,12 @@
 </template>
 
 <script>
+import PlanModel from '@/components/PlanModel'
+import Listofontributors from '@/components/Listofontributors'
+import Spring2019 from '@/components/2019Spring'
+
 export default {
-	name: 'Main2',
+	name: 'Main',
 	components:{
 		PlanModel,
 		Listofontributors,
