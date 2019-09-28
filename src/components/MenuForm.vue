@@ -78,7 +78,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 	a{
 		text-decoration: none;
 		color: black;
@@ -90,8 +89,8 @@ export default {
 		min-height: calc(100vh-20px);
 		i {
 			font-size: 1.5vw;
-        cursor: pointer;
-        	transition: all .5s ease-in-out;
+			cursor: pointer;
+			transition: all .5s ease-in-out;
 		}
 		z-index: 999;
 	}

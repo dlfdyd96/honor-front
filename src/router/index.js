@@ -11,6 +11,11 @@ import Product_Item from '@/components/Product_Item'
 import LoginForm from '@/components/LoginForm'
 import JoinForm from '@/components/JoinForm'
 import Notice from '@/components/Notice'
+import Article from '@/components/Article'
+import Qna from '@/components/Qna'
+import Behind from '@/components/Behind'
+import Collection from '@/components/Collection'
+
 
 Vue.use(Router)
 
@@ -27,7 +32,7 @@ export default new Router({
       component: LoginForm
     },
     {
-      path: '/12',
+      path: '/notice',
       component: Notice
     },
     {
@@ -35,39 +40,59 @@ export default new Router({
       component: JoinForm
     },
     {
-      path: '/1',
+      path: '/planmodel',
       name: 'PlanModel',
       component: PlanModel
     },
     {
-      path: '/2',
+      path: '/bm',
       name: 'BusinessModel',
       component: BusinessModel
     },
     {
-      path: '/3',
+      path: '/contributor',
       name: 'List_of_ontributors',
       component: List_of_ontributors
     },
     {
-      path: '/4',
+      path: '/fall19',
       name: '2019_Fall',
       component: Fall_2019
     },
     {
-      path: '/5',
+      path: '/spring19',
       name: '2019_Spring',
       component: Spring_2019
     },
     {
-      path: '/6',
+      path: '/fall18',
       name: '2018_Fall',
       component: Fall_2018
     },
     {
-      path: '/7',
+      path: '/product',
       name: 'Item',
       component: Product_Item
-    }
+    },
+    {
+      path: '/article',
+      name: 'Article',
+      component: Article
+    },
+    {
+      path: '/qna',
+      name: 'Qna',
+      component: Qna
+    },
+    {
+      path: '/behind',
+      name: 'Behind',
+      component: Behind
+    },
+    {
+      path: '/collection',
+      name: 'Collection',
+      component: Collection
+    },
   ]
 })
