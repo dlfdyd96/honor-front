@@ -4,14 +4,14 @@
             <thead>
                 <tr>
                     <td>번호</td>
-                    <td>작성자</td>
                     <td>제목</td>
+                    <td>작성자</td>
                     <td>작성일</td>
                     <td>조회수</td>
                 </tr>
             </thead>
             <tr v-for="notice in this.getNotice" :key="notice.Title">
-                <td>{{ notice.No }}</td><td>{{notice.Writer}}</td><td>{{notice.Title}}</td>
+                <td>{{ notice.No }}</td><td>{{notice.Title}}</td><td>{{notice.Writer}}</td>
                 <td>{{notice.Date}}</td><td>{{notice.Hit}}</td>
             </tr>
         </table>

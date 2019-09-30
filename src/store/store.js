@@ -22,6 +22,10 @@ export const store = new Vuex.Store({
             {N: 0, title:"명예옷장 off-line 날짜", date:'2019-10-11', writer:'강민정', view:'3'},
             {N: 1, title:"명예옷장 on-line 날짜", date:'2019-10-01', writer:'강민정', view: '9'}
         ],
+        qna: [
+            {N: 0, title:"명예옷장 off-line 날짜", date:'2019-10-11', writer:'강민정', view:'3'},
+            {N: 1, title:"명예옷장 on-line 날짜", date:'2019-10-01', writer:'강민정', view: '9'}
+        ],
         temp: ['abcd']
     },
     getters:{
@@ -39,6 +43,9 @@ export const store = new Vuex.Store({
         },
         getNotice(state){
             return state.notice;
+        },
+        getQna(state){
+            return state.qna;
         },
     },
     mutations: {
@@ -77,6 +84,16 @@ export const store = new Vuex.Store({
                 } 
             }
             console.log('setNotice: success data set');
+        },
+        setQna(state, data){
+            state.qna = [];
+
+            for(let i = 0 ; i < data.length; i++){
+                if(data[i].Specification == "1"){//나중에 거를거 다 거르셈
+                    state.qna.push(data[i]);
+                } 
+            }
+            console.log('setNotice: success data set');
         }
     },
     actions : {
@@ -92,10 +109,22 @@ export const store = new Vuex.Store({
             });
         }, 
         getNoticeServer(context){
-            console.log('request success ');
+            console.log('request success :  ');
             axios.get('http://202.31.202.253:5000/board')
             .then((response) => {
                 this.commit('setNotice',response.data);
+                console.log('request success '+response);
+              })
+            .catch(response => {
+                console.log('tlqkftlqkf');
+                console.log(response)
+            });
+        }, 
+        getQnaServer(context){
+            console.log('request success ');
+            axios.get('http://202.31.202.253:5000/board')
+            .then((response) => {
+                this.commit('setQna',response.data);
                 console.log('request success '+response);
               })
             .catch(response => {
