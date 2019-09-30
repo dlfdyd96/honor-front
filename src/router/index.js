@@ -15,6 +15,7 @@ import Article from '@/components/Article'
 import Qna from '@/components/Qna'
 import Behind from '@/components/Behind'
 import Collection from '@/components/Collection'
+import Members from '@/components/Members'
 
 
 Vue.use(Router)
@@ -53,6 +54,11 @@ export default new Router({
       path: '/contributor',
       name: 'Contributors',
       component: Contributors
+    },
+    {
+      path: '/members',
+      name: 'Members',
+      component: Members
     },
     {
       path: '/fall19',

@@ -5,16 +5,17 @@
 	<Sidebar>
 		<ul class="categorys">
 			<li>
-				<div class="introCategory">
-					<span @click="inst_hovering">
+				<div class="introCategory" @mouseover="inst_hovering" @mouseout="inst_hovering">
+					<span >
 						소개
 					</span>
 					<transition name="fade">
-						<div v-if="inst_hover">
+						<div v-show="inst_hover">
 							<ul class="introCategoryList">
-								<li><router-link to="/planmodel">기획의도</router-link></li>
-								<li><router-link to="/bm">비즈니스 모델</router-link></li>
-								<li><router-link to="/contributor">기부자 명단</router-link></li>
+								<li class="submenu"><router-link to="/planmodel">기획의도</router-link></li>
+								<li class="submenu"><router-link to="/bm">비즈니스 모델</router-link></li>
+								<li class="submenu"><router-link to="/contributor">기부자 명단</router-link></li>
+								<li class="submenu"><router-link to="/members">멤버들 소개</router-link></li>
 							</ul>
 						</div>
 					</transition>
@@ -23,16 +24,16 @@
 			<li><router-link to="/collection">컬렉션</router-link></li>
 			<li><router-link to="/product">상품</router-link></li>
 			<li>
-				<div class="behindCategory">
-					<span @click="behind_hovering">
+				<div class="behindCategory" @mouseover="behind_hovering" @mouseout="behind_hovering">
+					<span >
 						비하인드컷
 					</span>
 					<transition name="fade">
-						<div v-if="behind_hover">
+						<div v-show="behind_hover">
 							<ul class="behindCategoryList">
-								<li><router-link to="/fall19">2019 Fall</router-link></li>
-								<li><router-link to="/spring19">2019 Spring</router-link></li>
-								<li><router-link to="/fall18">2018 Fall</router-link></li>
+								<li class="submenu"><router-link to="/fall19">2019 Fall</router-link></li>
+								<li class="submenu"><router-link to="/spring19">2019 Spring</router-link></li>
+								<li class="submenu"><router-link to="/fall18">2018 Fall</router-link></li>
 							</ul>
 						</div>
 					</transition>
@@ -123,6 +124,17 @@ export default {
 		margin : 1px;
 		color : #322F42;
     }
+li{
+	list-style: none;
+	margin-top: 40px;
+}
+.submenu{
+	margin-top: 25px;
+}
+a { 
+	text-decoration:none ; 
+	color:#000000
+}
 
  ul.sidebar-panel-nav {
    list-style-type: none;
@@ -134,6 +146,7 @@ export default {
    font-size: 1.5rem;
    display: block;
    padding-bottom: 0.5em;
+   
  }
  .fade-enter-active, .fade-leave-active {
   transition: opacity .5s;

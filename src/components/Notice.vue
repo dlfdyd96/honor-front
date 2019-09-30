@@ -4,15 +4,15 @@
             <thead>
                 <tr>
                     <td>번호</td>
+                    <td>작성자</td>
                     <td>제목</td>
                     <td>작성일</td>
-                    <td>작성자</td>
                     <td>조회수</td>
                 </tr>
             </thead>
-            <tr v-for="(notice, index) in notice" :key="notice.title">
-                <td>{{ doMath(index) }}</td><td>{{notice.title}}</td><td>{{notice.date}}</td>
-                <td>{{notice.writer}}</td><td>{{notice.view}}</td>
+            <tr v-for="notice in this.getNotice" :key="notice.Title">
+                <td>{{ notice.No }}</td><td>{{notice.Writer}}</td><td>{{notice.Title}}</td>
+                <td>{{notice.Date}}</td><td>{{notice.Hit}}</td>
             </tr>
         </table>
         <div class="search_line">
@@ -23,21 +23,19 @@
 </template>
 
 <script>
-    export default {
-        data(){
-            return{
-                notice:[
-                    {title:"명예옷장 off-line 날짜", date:'2019-10-11', writer:'강민정', view:'3'},
-                    {title:"명예옷장 on-line 날짜", date:'2019-10-01', writer:'강민정', view: '9'}
-                ]
-            }
-        },
-        methods: {
-            doMath: function(index){
-                return index+1
-            }
-        }
+import { mapGetters, mapActions } from 'vuex'
+
+export default {
+    computed : {
+        ...mapGetters(['getNotice'])
+    },
+    methods: {
+        ...mapActions(['getNoticeServer'])
+    },
+    created() {
+        this.getNoticeServer();
     }
+}
 </script>
 
 <style lang="scss" scoped>

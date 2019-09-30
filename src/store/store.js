@@ -13,6 +13,15 @@ export const store = new Vuex.Store({
             {season:'2019 Spring 기부자', peoples: []},
             {season:'2018 Fall 기부자', peoples: []},
         ],
+        members: [
+            { season: '2019 Fall 멤버들', peoples: [{Name:"김태성", StudentNumber:"20150364", Pictures:"path"}] },
+            { season: '2019 Spring 멤버들', peoples: [{ Name: "김태성", StudentNumber: "20150364", Pictures: "path" }] },
+            { season: '2018 Fall 멤버들', peoples: [{ Name: "김태성", StudentNumber: "20150364", Pictures: "path" }] },
+        ],
+        notice: [
+            {N: 0, title:"명예옷장 off-line 날짜", date:'2019-10-11', writer:'강민정', view:'3'},
+            {N: 1, title:"명예옷장 on-line 날짜", date:'2019-10-01', writer:'강민정', view: '9'}
+        ],
         temp: ['abcd']
     },
     getters:{
@@ -24,7 +33,13 @@ export const store = new Vuex.Store({
         },
         getContributors(state){
             return state.contributors;
-        }
+        },
+        getMembers(state) {
+            return state.members;
+        },
+        getNotice(state){
+            return state.notice;
+        },
     },
     mutations: {
         togglePanel(state) {
@@ -52,6 +67,16 @@ export const store = new Vuex.Store({
                         break;
                 }
             }
+        },
+        setNotice(state, data){
+            state.notice = [];
+
+            for(let i = 0 ; i < data.length; i++){
+                if(data[i].isNotice == "1"){//나중에 거를거 다 거르셈
+                    state.notice.push(data[i]);
+                } 
+            }
+            console.log('setNotice: success data set');
         }
     },
     actions : {
@@ -65,6 +90,18 @@ export const store = new Vuex.Store({
                 console.log('tlqkftlqkf');
                 console.log(response)
             });
-        }
+        }, 
+        getNoticeServer(context){
+            console.log('request success ');
+            axios.get('http://202.31.202.253:5000/board')
+            .then((response) => {
+                this.commit('setNotice',response.data);
+                console.log('request success '+response);
+              })
+            .catch(response => {
+                console.log('tlqkftlqkf');
+                console.log(response)
+            });
+        }, 
     }
 });
