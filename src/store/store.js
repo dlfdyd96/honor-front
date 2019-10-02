@@ -26,7 +26,8 @@ export const store = new Vuex.Store({
             {N: 0, title:"명예옷장 off-line 날짜", date:'2019-10-11', writer:'강민정', view:'3'},
             {N: 1, title:"명예옷장 on-line 날짜", date:'2019-10-01', writer:'강민정', view: '9'}
         ],
-        temp: ['abcd']
+        temp: ['abcd'],
+        main_background : 'http://202.31.202.253:5000/assets/image/2019_fall_mainpage1.jpg',
     },
     getters:{
         getPanelIs(state) {
@@ -47,10 +48,18 @@ export const store = new Vuex.Store({
         getQna(state){
             return state.qna;
         },
+        getRandomBackground(state){
+            console.log(state.main_background);
+            return state.main_background;
+        }
     },
     mutations: {
         togglePanel(state) {
             state.isPanelOpen = !state.isPanelOpen;
+        },
+        setBackground(state){
+            console.log(state.main_background);
+            state.main_background = 'http://202.31.202.253:5000/assets/image/2019_fall_mainpage' + (Math.floor(Math.random() * (5 - 1)) + 1) + '.jpg';
         },
         setContributors(state, data){
             this.state.temp = data;
