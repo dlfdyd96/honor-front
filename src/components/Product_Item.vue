@@ -6,19 +6,11 @@
                     <li 
                     @click="changeProductMenu( { keyValue : label.Specification })" 
                     @mouseover="MenuObj[index].ishover= true"
-                    @mouseleave= "MenuObj[index].ishover= false"
+                    @mouseleave="MenuObj[index].ishover= false"
                     :class="{ hoveractive: MenuObj[index].ishover }">{{ label.name }}</li><!-- 클릭시 색깔변경 추가 -->
                 </td>
             </tr>
         </table>
-        <!-- <DetailItem></DetailItem> -->
-
-        <!-- v-if:itemSelected 로 DetailItem 띄어주기 
-        어떤 아이템이 선택이 되었는지는... 아 ㅠㅠ ㅠㅠㅠ시팽 => vuex로 관리
-        itemSelected:'id'
-         +) 이 페이지가 created 되면 itemSelected 는 0로 하기...
-
-        -->
         <ItemList></ItemList>
     </div>
 </template>
@@ -52,10 +44,6 @@ export default {
     methods:{
         ...mapMutations(['changeProductMenu']),
 
-        changeMenu: function(keyValue){
-            this.$store.state.MenuMode = keyValue
-            //console.log(this.$store.state.MenuMode)
-        }
     },
     created(){
         

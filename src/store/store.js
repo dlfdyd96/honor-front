@@ -118,7 +118,7 @@ export const store = new Vuex.Store({
                     state.qna.push(data[i]);
                 } 
             }
-            console.log('setNotice: success data set');
+            console.log('setQna: success data set');
         },
         setArticles(state, data){
             state.articles = [];
@@ -126,7 +126,7 @@ export const store = new Vuex.Store({
             for(let i = 0 ; i < data.length; i++){
                 state.articles.push(data[i]);
             }
-            console.log('setNotice: success data set');
+            console.log('setArticles: success data set');
         }, 
         setProducts(state, data){   //초기에는 proudcts 다 넣어주고
             state.products = [];
@@ -134,13 +134,19 @@ export const store = new Vuex.Store({
 
             for(let i = 0 ; i < data.length; i++){
                 state.products.push(data[i]);
-                state.productsTypes.push(data[i]);
+                if(state.productMenu == "A"){   //전체면 다 넣어주기
+                    //console.log("pushing");
+                    state.productsTypes.push(state.products[i]);
+                } else if(state.productMenu == state.products[i].Specification){ //아니면 메뉴에 해당하는 종류들 넣어주기
+                    //console.log("pushing kinds of");
+                    state.productsTypes.push(state.products[i]);
+                } 
             }
-            console.log('setNotice: success data set');
+            console.log('setProducts: success data set');
         }, 
         changeProductMenu(state, payload){  //상의 하의 같이 세부 정보는 또 따로 해서 반환
             state.productMenu = payload.keyValue; //현재 state 변경
-            //console.log(state.productMenu);
+            console.log(state.productMenu);
             state.productsTypes = [];
             for(let i = 0 ; i < state.products.length ; i++){ 
                 if(state.productMenu == "A"){   //전체면 다 넣어주기

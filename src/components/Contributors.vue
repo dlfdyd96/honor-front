@@ -1,7 +1,7 @@
 <template>
     <div class='contributor_background'>
         <div class="Container" >
-            <div  v-for="contributor in this.getContributors" :key="contributor.index" >
+            <div class="wrap" v-for="contributor in this.getContributors" :key="contributor.index" >
                 <div id="season">{{contributor.season}}</div>
                 <div id = "namesContainer">
                     <div id="names" v-for="(people, index) in contributor.peoples" :key="index">
@@ -37,51 +37,29 @@ export default {
 
 <style scoped>
 .Container {
-    position : fixed;
     width: 100%;
-    margin-top : 6rem;
-    margin-left : 6rem;
+    margin: auto;
+    padding-top: 18.9vh;
+    padding-left: 20%
 }
 .contributor_background {
-    background-color: rgb(233, 236, 241);
-    height: 100%;
-    width : 100%;
+    height: 100vh;
+    width : 100vw;
+    margin: auto;
 }
 .namesContainer{
-
+}
+.wrap{
+    margin-bottom: 13vh;
 }
 #names {
-    width : 80px;display: inline-block;
+    display: inline-block;
+    font-size: 2.86vh;
 }
 #season{
-    font-size: 30px;
-    margin-top: 20px;
-}
-
-</style>
-<!--<style lang="scss" scoped>
-table{
-    position: relative;
-    margin: auto;
-    width: 60vw;
-    top: 16vh;
-}
-
-#season{
+    font: bold;
     font-size: 2.2vw;
-    padding-bottom: 3.3vw;
+    margin-bottom: 6.2vh;
 }
 
-#names{
-    font-size: 1.61vw;
-    padding-bottom: 7vw;
-}
-
-#main{
-    min-height: 100vh;
-    height: calc(100vh-89px);
-    background-color: rgb(233, 236, 241);
-}
 </style>
-
-<!-- 세로 1366px, 세로 768px -->

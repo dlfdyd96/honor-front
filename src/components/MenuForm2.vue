@@ -1,7 +1,9 @@
 <template>
 <div class="slideImage">
 	<!-- <MenuForm></MenuForm> -->
-	<Burger></Burger>
+	<span class="menuContainer" v-on:click="this.toggle">
+		<i class="fas fa-bars menubars"></i>
+	</span>
 	<Sidebar>
 		<ul class="categorys">
 			<li>
@@ -55,9 +57,8 @@
 </template>
 
 <script>
-import Burger from './Burger.vue';
 import Sidebar from './Sidebar.vue';
-import { mapGetters } from 'vuex'
+import { mapGetters, mapMutations } from 'vuex'
 
 export default {
 	data() {
@@ -68,11 +69,17 @@ export default {
 	},
 	components: {
 		//MenuForm,
-		Burger,
 		Sidebar,
 	},
-	methods : {
-		...mapGetters(['getPanelIs']),
+	computed : {
+		...mapGetters({
+			getPanelIs : 'getPanelIs',
+		})
+	},
+	methods : { 
+		...mapMutations({
+			toggle : 'togglePanel'
+		}),
 		inst_hovering(){
 			this.inst_hover = !this.inst_hover;
 		},
@@ -84,6 +91,16 @@ export default {
 </script>
 
 <style scoped>
+	.menuContainer {
+        position: fixed;
+		top: 16px;
+		left: 16px;
+        z-index: 1000;
+    }
+    .menubars {
+        font-size: 1.5rem;
+        color : #322F42;
+    }
     .loginContainer {
         position: fixed;
 		top: 16px ;
@@ -126,14 +143,16 @@ export default {
     }
 li{
 	list-style: none;
-	margin-top: 40px;
+	margin-top: 5.2vh;
+	font-size: 1.33vw;
 }
 .submenu{
-	margin-top: 25px;
+	margin-top: 3.25vh;
 }
 a { 
 	text-decoration:none ; 
 	color:#000000
+	
 }
 
  ul.sidebar-panel-nav {

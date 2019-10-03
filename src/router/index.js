@@ -17,6 +17,7 @@ import Behind from '@/components/Behind'
 import Collection from '@/components/Collection'
 import Members from '@/components/Members'
 import DetailItem from '@/components/DetailItem'
+import Bulletin from '@/components/Bulletin'
 
 
 Vue.use(Router)
@@ -105,6 +106,11 @@ export default new Router({
       path: '/product/detail',
       name: 'DetailItem',
       component: DetailItem
+    },
+    {
+      path: '/bulletin',
+      name: 'Bulletin',
+      component: Bulletin
     },
   ]
 })

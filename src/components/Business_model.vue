@@ -14,18 +14,17 @@
 
 <style scoped>
     #main{
-      width:100%;
-      height:100%;
-      background-color: rgb(233, 236, 241);
+        display: table;
+        height: 100vh;
+        margin: auto;
     }
-    .image {
-        width:70%;
-        text-align: center;
-        margin:0px auto;
+    .image{
+        display: table-cell;
+        vertical-align: middle; 
     }
-    .image img {
-        width:100%;
-        height:auto;
+    img {
+        width:60vw;
+        height:80vh;
     }
 
 </style>
