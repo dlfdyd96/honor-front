@@ -3,7 +3,9 @@
         <!-- <div class="list" v-for="item in Items" v-bind:key="item.Title"> -->
         <div class="list" v-for="(item) in getKindsOfProducts" v-bind:key="item.id">
             <!-- <img :src= "item.Thumbnail" @click="setSelectedItem( {id : item.id })"> -->
-            <img :src= "item.Thumbnail" @click="setSelectedItem( {id : item.id })">
+            <router-link to="/product/detail">
+                <img :src= "item.Thumbnail" @click="setSelectedItem( {id : item.id })">
+            </router-link>
             <p>{{ item.Info }}</p>
             <p>{{ item.LastPrice }}</p>
         </div>
@@ -45,7 +47,8 @@ export default {
         ...mapGetters(['getKindsOfProducts'])
     },
     methods: {
-        ...mapActions(['getProductServer', 'setSelectedItem'])
+        ...mapMutations(['setSelectedItem']),
+        ...mapActions(['getProductServer'])
     },
     created() {
         this.$store.state.productMenu = "A";

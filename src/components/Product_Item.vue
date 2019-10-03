@@ -11,7 +11,7 @@
                 </td>
             </tr>
         </table>
-        <DetailItem></DetailItem>
+        <!-- <DetailItem></DetailItem> -->
 
         <!-- v-if:itemSelected 로 DetailItem 띄어주기 
         어떤 아이템이 선택이 되었는지는... 아 ㅠㅠ ㅠㅠㅠ시팽 => vuex로 관리

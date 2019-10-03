@@ -20,20 +20,21 @@ export default {
 </script>
 
 <style scoped>
-    .container{
-        position:absolute;
-        top:50%;
-        left: 50%;
-        transform: translateX(-50%) translateY(-50%)
-    }
-    video{
-        width: 70.3vw;
-        height: 70.3vh;
-    }
     .main{
         min-height: 100vh;
         height: calc(100vh-89px);
 		background-color: rgb(233, 236, 241);
-        text-align: center;
+        margin: auto;
+        display: table;
+    }
+    .container{
+        display: table-cell;
+        vertical-align: middle;
+        margin: auto;
+        
+    }
+    video{
+        width: 70.3vw;
+        height: 70.3vh;
     }
 </style>

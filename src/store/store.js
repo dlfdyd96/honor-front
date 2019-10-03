@@ -8,7 +8,7 @@ export const store = new Vuex.Store({
     state: {
         productMenu: 'A',
         isPanelOpen : false,
-        isClickItem : false,
+        selectedItem : 0,
         contributors : [
             {season:'2019 Fall 기부자', peoples: []},
             {season:'2019 Spring 기부자', peoples: []},
@@ -64,6 +64,9 @@ export const store = new Vuex.Store({
         },
         getKindsOfProducts(state){
             return state.productsTypes;
+        },
+        getSelectedItem(state){
+            return state.products[state.selectedItem];
         },
     },
     mutations: {
@@ -148,6 +151,10 @@ export const store = new Vuex.Store({
                     state.productsTypes.push(state.products[i]);
                 } 
             }
+        },
+        setSelectedItem(state, payload){
+            state.selectedItem = payload.id - 1;
+            console.log(state.selectedItem);
         },
     },
     actions : {

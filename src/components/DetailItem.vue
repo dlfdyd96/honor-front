@@ -1,12 +1,12 @@
 <template>
     <div id="main">
         <div>
-            <img class="itemPic" src='http://202.31.202.253:5000/assets/image/product/top/male/Sclass/TMS-001.jpg'>
+            <img class="itemPic" :src="getSelectedItem.Thumbnail">
             <div class="info">
-                <div id="title">상품명 OOO OOO</div>
+                <div id="title">상품명 {{ getSelectedItem.Info }}</div>
                 <div id="detail">
-                    <p>판매가 12,345원</p>
-                    <p>상품코드 ABC_1234</p>
+                    <p>판매가 {{getSelectedItem.LastPrice}}원</p>
+                    <p>상품코드 {{getSelectedItem.Code}}</p>
                 </div>
                 <div id="item_btns">
                     <button>구매</button>
@@ -21,13 +21,20 @@
 </template>
 
 <script>
-    export default {
-        data(){
-            return{
-                Video: require("@/assets/영상/2018_fall_명예옷장_메인영상.mp4")
-            }
+import {mapGetters} from 'vuex'
+export default {
+    data(){
+        return{
+            Video: require("@/assets/영상/2018_fall_명예옷장_메인영상.mp4")
         }
+    },
+    computed : {
+        ...mapGetters(['getProducts','getSelectedItem'])
+    },
+    created(){
+        console.log(this.getSelectedItem)
     }
+}
 </script>
 
 <style scoped>

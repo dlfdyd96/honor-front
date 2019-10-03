@@ -16,6 +16,7 @@ import Qna from '@/components/Qna'
 import Behind from '@/components/Behind'
 import Collection from '@/components/Collection'
 import Members from '@/components/Members'
+import DetailItem from '@/components/DetailItem'
 
 
 Vue.use(Router)
@@ -99,6 +100,11 @@ export default new Router({
       path: '/collection',
       name: 'Collection',
       component: Collection
+    },
+    {
+      path: '/product/detail',
+      name: 'DetailItem',
+      component: DetailItem
     },
   ]
 })
