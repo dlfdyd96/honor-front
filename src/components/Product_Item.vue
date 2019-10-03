@@ -2,51 +2,73 @@
     <div id='main'>
         <table id="labels">
             <tr>
-                <td v-for="label in MenuObj" v-bind:key="label.menu">
-                    <li v-on:click="changeMenu(label.menu)">{{ label.name }}</li>
+                <td class="inactive" v-for="(label, index) in MenuObj" v-bind:key="index">
+                    <li 
+                    @click="changeProductMenu( { keyValue : label.Specification })" 
+                    @mouseover="MenuObj[index].ishover= true"
+                    @mouseleave= "MenuObj[index].ishover= false"
+                    :class="{ hoveractive: MenuObj[index].ishover }">{{ label.name }}</li><!-- 클릭시 색깔변경 추가 -->
                 </td>
             </tr>
         </table>
+        <DetailItem></DetailItem>
+
+        <!-- v-if:itemSelected 로 DetailItem 띄어주기 
+        어떤 아이템이 선택이 되었는지는... 아 ㅠㅠ ㅠㅠㅠ시팽 => vuex로 관리
+        itemSelected:'id'
+         +) 이 페이지가 created 되면 itemSelected 는 0로 하기...
+
+        -->
         <ItemList></ItemList>
     </div>
 </template>
 
 <script>
-    import ItemList from '@/components/ItemList'
-    export default {
-        name: 'ProductItem',
-        components: {
-            ItemList
-        },
-        data(){
-            this.$store.state.MenuMode = "all"
-            //console.log(this.$store.state.MenuMode)
-            return{
-                MenuObj: [ 
-                    {name : "전체", menu:"all"},
-                    {name : "상의", menu:"top"},
-                    {name : "하의", menu:"bottom"},
-                    {name : "외투", menu:"coat"},
-                    {name : "정장", menu:"suit"},
-                    {name : "잡화", menu:"miscellaneous"},
-                    {name : "기타", menu:"etc"}
-                 ]
-            }
-        },
-        methods:{
-            changeMenu: function(keyValue){
-                this.$store.state.MenuMode = keyValue
-                //console.log(this.$store.state.MenuMode)
-            }
+import { mapMutations, mapGetters } from 'vuex'
+import ItemList from '@/components/ItemList'
+import DetailItem from '@/components/DetailItem'
+
+export default {
+    name: 'ProductItem',
+    components: {
+        ItemList,
+        DetailItem
+    },
+    data(){
+        //this.$store.state.productMenu = "all"
+        //console.log(this.$store.state.MenuMode)
+        return{
+            MenuObj: [ 
+                {name : "전체", menu:"all", Specification:"A", ishover:false},  //menu 속성 제거?
+                {name : "상의", menu:"top", Specification:"T", ishover:false},
+                {name : "하의", menu:"bottom", Specification:"B", ishover:false},
+                {name : "외투", menu:"coat", Specification:"O", ishover:false},
+                {name : "정장", menu:"suit", Specification:"S", ishover:false},
+                {name : "잡화", menu:"miscellaneous", Specification:"G", ishover:false},
+                {name : "기타", menu:"etc", Specification:"E", ishover:false}
+            ]
         }
+    },
+    methods:{
+        ...mapMutations(['changeProductMenu']),
+
+        changeMenu: function(keyValue){
+            this.$store.state.MenuMode = keyValue
+            //console.log(this.$store.state.MenuMode)
+        }
+    },
+    created(){
+        
     }
+}
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
+    
     #main{
         min-height: 100vh;
         height: calc(100vh-89px);
-		background-color: rgb(233, 236, 241);
+        background-color: rgb(233, 236, 241);
     }
 
     #labels{
@@ -54,17 +76,20 @@
         margin: auto;
         font-size: 1.45vw;
         border-spacing: 4.4vw;
-        li{
-            cursor: pointer;
-            font-size: 1.3vw;
-            list-style: none;
-            text-decoration: none;
-            color: black;
-            &:hover {
-                color: rgb(175, 175, 175);
-            }
-        }
     }
-
+    .inactive{
+        cursor: pointer;
+        font-size: 1.3vw;
+        list-style: none;
+        text-decoration: none;
+        color: black;
+    }
+    .hoveractive{
+        cursor: pointer;
+        font-size: 1.3vw;
+        list-style: none;
+        text-decoration: none;
+        color: rgb(175, 175, 175);
+    }
     
 </style>

@@ -1,7 +1,7 @@
 <template>
     <div id='main'>
         <section id="form">
-            <p><strong>LOGIN</strong></p>
+            <p id="title"><strong>LOGIN</strong></p>
             <div id="login_box">
                 <ul id="input_button">
                     <li id="id_pass">
@@ -27,7 +27,7 @@
     }
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
     #main{
         min-height: 100vh;
         height: calc(100vh-89px);
@@ -38,11 +38,10 @@
         position: relative;
         text-align: center;
         top: 27.4vh;
-        p{
-            font-size: 3.52vw;
-        }
     }
-
+    #title{
+        font-size: 3.52vw;
+    }
     li{
         list-style: none;
     }
@@ -63,9 +62,10 @@
     #input_button{
         display: table;
         margin:auto;
-        #login_pwd{
-            margin-top: 1.8vh;
-        }
+        
+    }
+    #login_pwd{
+        margin-top: 1.8vh;
     }
 
     li[id="id_pass"],[id="login_btn"]{
@@ -85,23 +85,26 @@
     #btns {
         text-align: center;
         padding-top: 4.7vh;
-        button {
-            margin-left:25px;
-            display:inline;
-            font-size: 0.87vw;
-            background-color: rgb(118,112,112);
-            color: white;
-        }
+    }
 
-        #id_search{
-            width: 178px;
-            height: 28px;
-        }
+    #id_search{
+        width: 178px;
+        height: 28px;
+        margin-left:25px;
+        display:inline;
+        font-size: 0.87vw;
+        background-color: rgb(118,112,112);
+        color: white;
+    }
 
-        #join_btn{
-            width: 120px;
-            height: 28px;
-        }
+    #join_btn{
+        margin-left:25px;
+        display:inline;
+        font-size: 0.87vw;
+        background-color: rgb(118,112,112);
+        color: white;
+        width: 120px;
+        height: 28px;
     }
 
     

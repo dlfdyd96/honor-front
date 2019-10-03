@@ -1,13 +1,16 @@
 <template>
-    <div class='main'>
-        <div class="container">
-            <video v-bind:src='Video' autoplay controls loop></video>
-        </div>
+    <div class="container">
+        <video v-bind:src='Video' autoplay controls loop></video>
+        <Photo></Photo>
     </div>
 </template>
 
 <script>
+import Photo from '@/components/BehindPhoto'
 export default {
+    components : {
+        Photo,
+    },
     data(){
         return{
             Video: require("@/assets/영상/2018_fall_명예옷장_메인영상.mp4")
@@ -16,7 +19,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
     .container{
         position:absolute;
         top:50%;

@@ -38,7 +38,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
     .mainText{
         display: inline;
         font-size: 3vw;

@@ -6,8 +6,9 @@ Vue.use(Vuex);
 
 export const store = new Vuex.Store({
     state: {
-        MenuMode: 'all',
+        productMenu: 'A',
         isPanelOpen : false,
+        isClickItem : false,
         contributors : [
             {season:'2019 Fall 기부자', peoples: []},
             {season:'2019 Spring 기부자', peoples: []},
@@ -28,6 +29,9 @@ export const store = new Vuex.Store({
         ],
         temp: ['abcd'],
         main_background : 'http://202.31.202.253:5000/assets/image/2019_fall_mainpage1.jpg',
+        articles : [],
+        products : [],
+        productsTypes: [],
     },
     getters:{
         getPanelIs(state) {
@@ -48,17 +52,26 @@ export const store = new Vuex.Store({
         getQna(state){
             return state.qna;
         },
+        getArticles(state){
+            return state.articles;
+        },
         getRandomBackground(state){
-            console.log(state.main_background);
+            //console.log(state.main_background);
             return state.main_background;
-        }
+        },
+        getProducts(state){ //매개변수로 Specification 으로 구별 하여 다 뽑아줄것.
+            return state.products;
+        },
+        getKindsOfProducts(state){
+            return state.productsTypes;
+        },
     },
     mutations: {
         togglePanel(state) {
             state.isPanelOpen = !state.isPanelOpen;
         },
         setBackground(state){
-            console.log(state.main_background);
+            //console.log(state.main_background);
             state.main_background = 'http://202.31.202.253:5000/assets/image/2019_fall_mainpage' + (Math.floor(Math.random() * (5 - 1)) + 1) + '.jpg';
         },
         setContributors(state, data){
@@ -103,7 +116,39 @@ export const store = new Vuex.Store({
                 } 
             }
             console.log('setNotice: success data set');
-        }
+        },
+        setArticles(state, data){
+            state.articles = [];
+
+            for(let i = 0 ; i < data.length; i++){
+                state.articles.push(data[i]);
+            }
+            console.log('setNotice: success data set');
+        }, 
+        setProducts(state, data){   //초기에는 proudcts 다 넣어주고
+            state.products = [];
+            state.productsTypes = [];
+
+            for(let i = 0 ; i < data.length; i++){
+                state.products.push(data[i]);
+                state.productsTypes.push(data[i]);
+            }
+            console.log('setNotice: success data set');
+        }, 
+        changeProductMenu(state, payload){  //상의 하의 같이 세부 정보는 또 따로 해서 반환
+            state.productMenu = payload.keyValue; //현재 state 변경
+            //console.log(state.productMenu);
+            state.productsTypes = [];
+            for(let i = 0 ; i < state.products.length ; i++){ 
+                if(state.productMenu == "A"){   //전체면 다 넣어주기
+                    //console.log("pushing");
+                    state.productsTypes.push(state.products[i]);
+                } else if(state.productMenu == state.products[i].Specification){ //아니면 메뉴에 해당하는 종류들 넣어주기
+                    //console.log("pushing kinds of");
+                    state.productsTypes.push(state.products[i]);
+                } 
+            }
+        },
     },
     actions : {
         getContributorsServer(context){
@@ -113,7 +158,7 @@ export const store = new Vuex.Store({
                 console.log('request success '+response);
               })
             .catch(response => {
-                console.log('tlqkftlqkf');
+                console.log('Contributors Request Fail');
                 console.log(response)
             });
         }, 
@@ -125,7 +170,7 @@ export const store = new Vuex.Store({
                 console.log('request success '+response);
               })
             .catch(response => {
-                console.log('tlqkftlqkf');
+                console.log('Ntoice request fail');
                 console.log(response)
             });
         }, 
@@ -137,7 +182,31 @@ export const store = new Vuex.Store({
                 console.log('request success '+response);
               })
             .catch(response => {
-                console.log('tlqkftlqkf');
+                console.log('Qna request fail');
+                console.log(response)
+            });
+        }, 
+        getArticleServer(context){
+            console.log('request success ');
+            axios.get('http://202.31.202.253:5000/article')
+            .then((response) => {
+                this.commit('setArticles',response.data);
+                console.log('request success '+response);
+              })
+            .catch(response => {
+                console.log('Article Request Fail');
+                console.log(response)
+            });
+        }, 
+        getProductServer(context){
+            console.log('request success ');
+            axios.get('http://202.31.202.253:5000/product')
+            .then((response) => {
+                this.commit('setProducts', response.data);
+                console.log('request success ' + response);
+              })
+            .catch(response => {
+                console.log('Products Request Fail');
                 console.log(response)
             });
         }, 

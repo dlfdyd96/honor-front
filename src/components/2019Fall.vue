@@ -16,7 +16,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
     .container{
         position:absolute;
         top:50%;
