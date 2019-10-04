@@ -18,6 +18,7 @@ import Collection from '@/components/Collection'
 import Members from '@/components/Members'
 import DetailItem from '@/components/DetailItem'
 import Bulletin from '@/components/Bulletin'
+import PurchaseComplete from '@/components/PurchaseComplete'
 
 
 Vue.use(Router)
@@ -111,6 +112,11 @@ export default new Router({
       path: '/bulletin',
       name: 'Bulletin',
       component: Bulletin
+    },
+    {
+      path: '/product/PurchaseComplete',
+      name: 'PurchaseComplete',
+      component: PurchaseComplete
     },
   ]
 })

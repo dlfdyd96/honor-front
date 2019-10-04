@@ -27,18 +27,19 @@
                     <p>상품코드 {{getSelectedItem.Code}}</p>
                 </div>
                 <div id="item_btns">
-                    <button id="show-modal" @click="showModal = true">구매</button>
-                    <button>장바구니</button>
                     
-                    <modal v-if="showModal" @close="showModal = false"><!--
-                        you can use custom content here to overwrite
-                        default content
-                        -->
+                    <router-link to="PurchaseComplete">
+                        <button id="show-modal" @click="showModal = true">구매</button>
+                    </router-link>
+                    <button>장바구니</button>
+
+
+                    <!-- <modal v-if="showModal" @close="showModal = false">
                         <h3 slot="header">알림!</h3>
                         <div slot="body">
                             신한 110-446-127623 (주:황일용)으로 15분 이내에 입금하세요!
                         </div>
-                    </modal>
+                    </modal> -->
                 </div>
             </div>
         </div>
