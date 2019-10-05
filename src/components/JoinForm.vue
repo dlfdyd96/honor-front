@@ -9,7 +9,7 @@
                 <tr>
                     <td class="category">아이디</td>
                     <td class="answer"><input type="text" size="35" name="userid" placeholder="아이디">
-                    <button>아이디 중복확인 ></button><i>(영문소문자/숫자, 4~6자)</i></td>
+                    <button class="idCheckBtn">아이디 중복확인 ></button><i>(영문소문자/숫자, 4~6자)</i></td>
                 </tr>
                 <tr>
                     <td class="category">비밀번호</td>
@@ -36,7 +36,7 @@
                 <tr>
                     <td class="category">이메일</td>
                     <td class="answer"><input type="text" name="email_id"> @ <input type="text" name="email" :value="Email">
-                        <select name="emadress" v-on:change="InputEmail($event)">
+                        <select class="selectEmail" name="emadress" v-on:change="InputEmail($event)">
                             <option v-for="mail in Emails" :key="mail.name" :value="mail.value" >{{mail.name}}</option>
                         </select>
                     </td>
@@ -81,7 +81,7 @@
     }
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
     .main{
         min-height: 100vh;
         height: calc(100vh-89px);
@@ -96,63 +96,77 @@
     table[id="signup_box"]{
         margin: auto;
         border-collapse: collapse;
-        tr td{
-            font-size: 1.6vw;
-            border: 1.5px solid white;
-            width: 44.3vw;
-            padding: 0.2vw
-        }
-        .category{
-            width: 18.15vw;
-        }
-        .text_box{
-            width: 5.49vw;
-        }
-        button{
-            width: 8.65vw;
-            height: 3.3vh;
-            border: 1px solid;
-            font-size: 0.89vw;
-            background-color: transparent;
-        }
-        input, select{
-            border: 1px solid;
-            height: 3.28vh;
-            background-color: transparent;
-            font-size: 0.89vw;
-        }
-
-        select{
-            appearance: none;
-            border-radius: 0px;
-            width: 5.45vw;
-            text-align-last:center;
-        }
-        i{
-            font-size: 1.32vw;
-            font-style: normal;
-            margin-left: 0.5vw;
-            margin-right: 0.5vw;
-        }
-        input[type='radio']{
-            font-size: 1.2vw;
-            vertical-align: middle;
-        }
-        .answer{
-            padding-left: 1vw;
-        }
+        
+    }
+    tr td{
+        font-size: 1.6vw;
+        border: 1.5px solid white;
+        width: 48vw;
+        padding: 0.2vw
+    }
+    .category{
+        width: 18.15vw;
+        text-align: left;
+    }
+    .text_box{
+        width: 5.49vw;
+    }
+    button{
+        width: 8.65vw;
+        height: 3.3vh;
+        border: 1px solid;
+        font-size: 0.89vw;
+        background-color: transparent;
+    }
+    input, select{
+        border: 1px solid;
+        height: 3.28vh;
+        background-color: transparent;
+        font-size: 0.89vw;
     }
 
+    select{
+        appearance: none;
+        border-radius: 0px;
+        width: 5.45vw;
+        text-align-last:center;
+    }
+    i{
+        font-size: 1.32vw;
+        font-style: normal;
+        margin-left: 0.5vw;
+        margin-right: 0.5vw;
+    }
+    input[type='radio']{
+        font-size: 1.2vw;
+        vertical-align: middle;
+    }
+    .answer{
+        padding-left: 1vw;
+        text-align: left;
+    }
     #btn_line{
         margin-top: 13vh;
         text-align: center;
-        #sign_up_btn{
-            position: relative;
-            font-size: 1.45vw;
-            width: 13.75vw;
-            height: 5.7vh;
-            background-color: rgb(118,112,112);
-            color: white;
-        }
+    }
+    #sign_up_btn{
+        position: relative;
+        font-size: 1.45vw;
+        width: 13.75vw;
+        height: 5.7vh;
+        background-color: rgb(118,112,112);
+        color: white;
+    }
+    .idCheckBtn{
+        height: 3.5vh;
+        width: 9vw;
+        margin-left: 2vw;
+        font-size: 1vw;
+    }
+    .selectEmail{
+        margin-left: 1vw;
+        width: 7vw;
+        height: 3.5vh;
+        font-size: 1vw;
     }
 </style>

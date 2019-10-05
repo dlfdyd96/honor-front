@@ -169,7 +169,7 @@ export const store = new Vuex.Store({
         },
         setSelectedBoard(state, payload){
             state.selectedBoard = payload.give;
-            console.log("tqtqt "+state.selectedBoard.Title);
+            console.log("gg "+state.selectedBoard.Title);
         },
     },
     actions : {

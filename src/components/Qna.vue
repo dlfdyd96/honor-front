@@ -6,18 +6,19 @@
                     <tr class="tableTitle">
                         <td>번호</td>
                         <td>제목</td>
-                        <td>작성자</td>
                         <td>작성일</td>
-                        <td>조회수</td>
+                        <td>작성자</td>
                     </tr>
                 </thead>
                 <tr class="qnalist" v-for="(qna, index) in this.getQna" :key="index">
                     <td>{{ qna.No }}</td>
-                    <router-link to="/bulletin" id="qnaTitle">
-                        <td @click="setSelectedBoard({ give : qna})">{{qna.Title}}</td>
-                    </router-link>
+                    <td @click="setSelectedBoard({ give : qna})">
+                        <router-link to="/bulletin" id="qnaTitle">
+                        {{qna.Title}}
+                        </router-link>
+                    </td>
+                    <td>{{qna.Date}}</td>
                     <td>{{qna.Writer}}</td>
-                    <td>{{qna.Date}}</td><td>{{qna.Hit}}</td>
                 </tr>
             </table>
             <div class="search_line">
@@ -48,6 +49,7 @@ export default {
 <style scoped>
     a {
         text-decoration: none;
+        color: black;
     }
     .main{
         margin: auto;
@@ -99,11 +101,11 @@ export default {
 
     .searchBtn{
         background-color: rgb(118,112,112);
-            color: white;
-            border: 1px solid black;
-            font-size: 1.45vw;
-            width: 13.7vw;
-            height: 5.8vh;
+        color: white;
+        border: 1px solid black;
+        font-size: 1.45vw;
+        width: 13.7vw;
+        height: 5.8vh;
     }
     #qnaTitle{
         cursor: pointer;

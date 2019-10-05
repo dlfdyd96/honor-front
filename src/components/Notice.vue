@@ -11,11 +11,13 @@
                         <td>조회수</td>
                     </tr>
                 </thead>
-                <tr class="noticelist" v-for="notice in this.getNotice" :key="notice.Title">
+                <tr class="noticelist" v-for="(notice, index) in this.getNotice" :key="index">
                     <td>{{ notice.No }}</td>
-                    <router-link to="/bulletin" id="noticeTitle">
-                        <td @click="setSelectedBoard({ give : notice})">{{notice.Title}}</td>
-                    </router-link>
+                    <td @click="setSelectedBoard({ give : notice})">
+                        <router-link to="/bulletin" id="noticeTitle">
+                            {{notice.Title}}
+                        </router-link>
+                    </td>
                     <td>{{notice.Writer}}</td>
                     <td>{{notice.Date}}</td><td>{{notice.Hit}}</td>
                 </tr>
@@ -36,6 +38,7 @@ export default {
         ...mapGetters(['getNotice'])
     },
     methods: {
+        ...mapMutations(['setSelectedBoard']),
         ...mapActions(['getNoticeServer'])
     },
     created() {
@@ -45,6 +48,10 @@ export default {
 </script>
 
 <style scoped>
+    a {
+        text-decoration: none;
+        color: black;
+    }
     .main{
         margin: auto;
         display: table;
@@ -94,11 +101,11 @@ export default {
 
     .searchBtn{
         background-color: rgb(118,112,112);
-            color: white;
-            border: 1px solid black;
-            font-size: 1.45vw;
-            width: 13.7vw;
-            height: 5.8vh;
+        color: white;
+        border: 1px solid black;
+        font-size: 1.45vw;
+        width: 13.7vw;
+        height: 5.8vh;
     }
     #noticeTitle{
         cursor: pointer;

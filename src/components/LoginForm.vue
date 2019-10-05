@@ -12,9 +12,15 @@
                     </li>
                     <li id="login_btn"><button>로그인</button></li>
                 </ul>
+                
+                
+                
                 <ul id="btns">
+                    <button id="kakaoBox">카카오계정으로 시작하기</button>
+                    <li>
                     <button id="id_search">아이디/비밀번호 찾기 ></button>
                     <router-link id="join_btn" tag="button" to="/join">회원가입 ></router-link>
+                    </li>
                 </ul>
             </div>
         </section>
@@ -33,7 +39,6 @@
         height: calc(100vh-89px);
 		background-color: rgb(233, 236, 241);
     }
-
     #form{
         position: relative;
         text-align: center;
@@ -80,6 +85,7 @@
         font-size: 1.45vw;
         background-color: rgb(118,112,112);
         color: white;
+        cursor: pointer;
     }
 
     #btns {
@@ -88,24 +94,35 @@
     }
 
     #id_search{
-        width: 178px;
-        height: 28px;
-        margin-left:25px;
-        display:inline;
+        width: 13vw;
+        height: 3.6vh;
+        margin-left:1.8vw;
         font-size: 0.87vw;
         background-color: rgb(118,112,112);
         color: white;
+        cursor: pointer;
     }
 
     #join_btn{
-        margin-left:25px;
-        display:inline;
+        width: 8.8vw;
+        height: 3.6vh;
+        margin-left:1.8vw;
         font-size: 0.87vw;
         background-color: rgb(118,112,112);
         color: white;
-        width: 120px;
-        height: 28px;
+        cursor: pointer;
     }
 
+    #kakaoBox{
+        margin-left: 1.8vw;
+        width: 23.5vw;
+        height: 3.6vh;
+        font-size: 0.87vw;
+        margin-bottom: 3.2vh;
+        background-color: rgb(250,255,0);
+        color: rgb(60, 30, 30);
+        border: none;
+        cursor: pointer;
+    }
     
 </style>
