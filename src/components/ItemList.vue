@@ -1,5 +1,5 @@
 <template>
-    <div id="main">
+    <div>
         <!-- <div class="list" v-for="item in Items" v-bind:key="item.Title"> -->
         <div class="list" v-for="(item) in getKindsOfProducts" v-bind:key="item.id">
             <!-- <img :src= "item.Thumbnail" @click="setSelectedItem( {id : item.id })"> -->
@@ -31,9 +31,6 @@ export default {
 </script>
 
 <style scoped>
-    #main{
-        padding-left: 6.82vw;
-    }
     img{
         padding: 0;
         width: 24.75vw;

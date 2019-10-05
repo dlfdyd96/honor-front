@@ -1,29 +1,47 @@
 <template>
-	<div id="main">
+	<div class="main">
         <div class="wrap">
 			<table class="noticeTable">
 				<thead class="table">	
 					<th class="tableTitle">
-						<tr>번호</tr>
-						<tr>제목</tr>
-						<tr>작성자</tr>
-						<tr>작성일</tr>
-						<tr>조회수</tr>
+						<tr>번호
+							<!-- <td>{{board.id}}</td> -->
+							<td>{{ getSelectedBoard.No}}</td>
+						</tr>
+						<tr>제목
+							<td>{{ getSelectedBoard.Title }}</td>
+						</tr>
+						<tr>작성자
+							<td>{{ getSelectedBoard.Writer }}</td>
+						</tr>
+						<tr>작성일
+							<td>{{ getSelectedBoard.Date }}</td>
+						</tr>
+						<tr>조회수
+							<td>{{ getSelectedBoard.Hit }}</td>
+						</tr>
 					</th>
 				</thead>
 			</table>
+			<div>
+				{{getSelectedBoard.Contents}}
+			</div>
 		</div>
 	</div>
 </template>
 
 <script>
-export default {
+import {mapGetters, mapActions} from 'vuex'
 
+export default {
+	computed : {
+		...mapGetters(['getSelectedBoard'])
+	},
 }
 </script>
 
 <style scoped>
-#main{
+.main{
 	margin: auto;
 	display: table;
 	min-height: 100vh;

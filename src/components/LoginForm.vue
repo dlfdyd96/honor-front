@@ -1,5 +1,5 @@
 <template>
-    <div id='main'>
+    <div class='main'>
         <section id="form">
             <p id="title"><strong>LOGIN</strong></p>
             <div id="login_box">
@@ -28,7 +28,7 @@
 </script>
 
 <style scoped>
-    #main{
+    .main{
         min-height: 100vh;
         height: calc(100vh-89px);
 		background-color: rgb(233, 236, 241);

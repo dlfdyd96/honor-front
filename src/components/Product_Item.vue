@@ -1,5 +1,5 @@
 <template>
-    <div id='main'>
+    <div class='main'>
         <table id="labels">
             <tr>
                 <td class="inactive" v-for="(label, index) in MenuObj" v-bind:key="index">
@@ -53,7 +53,7 @@ export default {
 
 <style scoped>
     
-    #main{
+    .main{
         min-height: 100vh;
         height: calc(100vh-89px);
         background-color: rgb(233, 236, 241);

@@ -1,5 +1,5 @@
 <template>
-    <div id='main'>
+    <div class='main'>
         <div class="Container" >
             <div  v-for="member in this.getMembers" :key="member.index" >
                 <div id="season">{{member.season}}</div>
@@ -39,7 +39,7 @@ export default {
 </script>
 
 <style scoped>
-    #main{
+    .main{
         overflow: auto;
         min-height: 100vh;
         height: calc(100vh-89px);

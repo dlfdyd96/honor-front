@@ -1,6 +1,6 @@
 <template>
-    <div id="main">
-        <div class="list" v-for="article in this.getArticles" v-bind:key="article.id">
+    <div class="article">
+        <div class="articlelist" v-for="article in this.getArticles" v-bind:key="article.id">
             <img :src= "article.Thumbnail" >
             <p>{{ article.Title }}</p>
             <p>{{ article.Date }}</p>
@@ -25,20 +25,25 @@ export default {
 </script>
 
 <style scoped>
-    #main{
-        margin-top: 10px;
-        margin-left: 58px;
+    .article{
+        padding-left: 2.8vw;
     }
     img{
         padding: 0;
-        width: 390px;
-        height: 265px;
+        width: 28.5vw;
+        height: 34.5vh;
+        margin: 1.45vw;
+        
     }
-
-    .list{
-        margin-right: 40px;
+    .articlelist{
+        padding: 0;
         display: inline-block;
-        margin-bottom: 100px;
+        text-align: center;
+    }
+    .articlelist > p{
+        margin: auto;
+        overflow: hidden; 
+        width: 28.5vw;
     }
 
 

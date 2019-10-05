@@ -1,5 +1,5 @@
 <template>
-    <div id="main">
+    <div>
         <table id="labels">
             <tr>
                 <td  v-for="(label, index) in MenuObj" v-bind:key="index">
@@ -18,34 +18,34 @@
                 </td>
             </tr>
         </table>
-        <div>
-            <img class="itemPic" :src="getSelectedItem.Thumbnail">
+        <div id="main">
+            
             <div class="info">
+                <img class="itemPic" :src="getSelectedItem.Thumbnail">
                 <div id="title">상품명 {{ getSelectedItem.Info }}</div>
                 <div id="detail">
                     <p>판매가 {{getSelectedItem.LastPrice}}원</p>
                     <p>상품코드 {{getSelectedItem.Code}}</p>
                 </div>
                 <div id="item_btns">
-                    
-                    <router-link to="PurchaseComplete">
-                        <button id="show-modal" @click="showModal = true">구매</button>
-                    </router-link>
+                    <button id="show-modal" @click="showModal = true">구매</button>
                     <button>장바구니</button>
-
-
-                    <!-- <modal v-if="showModal" @close="showModal = false">
+                    
+                    <modal v-if="showModal" @close="showModal = false"><!--
+                        you can use custom content here to overwrite
+                        default content
+                        -->
                         <h3 slot="header">알림!</h3>
                         <div slot="body">
                             신한 110-446-127623 (주:황일용)으로 15분 이내에 입금하세요!
                         </div>
-                    </modal> -->
+                    </modal>
                 </div>
             </div>
         </div>
-        
-            <video v-bind:src='Video' autoplay controls loop></video>
-        
+        <div id="video">
+        <video v-bind:src='Video' autoplay controls loop></video>
+        </div>
     </div>
 </template>
 
@@ -86,43 +86,51 @@ export default {
 
 <style scoped>
     #main{
-        margin-left: 172px;
+        padding-top: 3.9vh;
+        padding-left: 12.6vw;
+        padding-right: 12.6vw;
     }
     .itemPic{
-        width:450px;
-        height: 450px;
+        width:32.95vw;
+        height: 32.95vw;
         float: left;
-        margin-right: 64px;
+        margin-right: 4.7vw;
     }
     .info{
-
+        
     }
     #title{
-        font-size: 34px;
-        margin-bottom: 27px;
+        font-size: 2.5vw;
+        font-weight: bold;
+        margin-bottom: 3vh;
     }
     #detail{
-        font-size: 20px;
-        margin-top: 27px;
-        margin-bottom: 7px;
+        font-size: 1.46vw;
+        margin-top: 3vh;
+        margin-bottom: 1vh;
     }
     p{
-        margin-bottom: 20px;
+        margin-bottom: 2.6vh;
     }
     button{
-        width: 167px;
-        height: 68px;
+        width: 12.2vw;
+        height: 8.9vh;
         font-size: 1.45vw;
         background-color: rgb(118,112,112);
         color: white;
-        margin-right: 32px;
+        margin-right: 2.4vw;
     }
     video{
-        margin-top: 300px;
-        width: 950px;
-        height: 540px;
+        margin: auto;
+        padding-top: 39.1vh;
+        width: 69.55vw;
+        height: 70.5vh;
     }
-
+    #video{
+        margin: auto;
+        text-align: center;
+        padding-bottom: 15vh;
+    }
     #labels{
         position: relative;
         margin: auto;

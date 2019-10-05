@@ -43,23 +43,24 @@ export default {
     padding-left: 20%
 }
 .contributor_background {
-    height: 100vh;
+    min-height: 100vh;
+    height: calc(100vh-89px);
     width : 100vw;
     margin: auto;
 }
 .namesContainer{
 }
 .wrap{
-    margin-bottom: 13vh;
+    padding-bottom: 13vh;
 }
 #names {
     display: inline-block;
     font-size: 2.86vh;
 }
 #season{
-    font: bold;
     font-size: 2.2vw;
-    margin-bottom: 6.2vh;
+    font-weight: bold;
+    padding-bottom: 6.2vh;
 }
 
 </style>

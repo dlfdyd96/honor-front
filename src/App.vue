@@ -10,7 +10,6 @@
 
 <script>
 import MenuForm2 from '@/components/MenuForm2'
-
 export default {
   components: {
     MenuForm2,

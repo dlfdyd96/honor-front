@@ -28,6 +28,8 @@ export default {
 		background-color: rgb(233, 236, 241);
         margin: auto;
         display: table;
+        padding-top: 15.7vh;
+        
     }
     .container{
         display: table-cell;

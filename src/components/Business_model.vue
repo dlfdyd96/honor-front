@@ -1,5 +1,5 @@
 <template>
-    <div id='main'>
+    <div class='main'>
         <div class="image" >
             <img src="../assets/bm.png">
         </div>
@@ -13,7 +13,7 @@
 </script>
 
 <style scoped>
-    #main{
+    .main{
         display: table;
         height: 100vh;
         margin: auto;
@@ -24,7 +24,7 @@
     }
     img {
         width:60vw;
-        height:80vh;
+        height: auto;
     }
 
 </style>

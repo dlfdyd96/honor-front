@@ -1,5 +1,5 @@
 <template>
-    <div id="main">
+    <div class="main">
         <div class="list" v-for="(item,index) in Items" v-bind:key="index">
             <img :src= "item.Picture" >
         </div>
@@ -24,20 +24,19 @@
 </script>
 
 <style>
-    #main{
-        position: relative;
+    .main{
+        text-align: center;
     }
     img{
         padding: 0;
-        width: 338px;
-        height: 338px;
+        width: 24.75vw;
+        height: 24.75vw;
     }
 
     .list{
         text-align: center;
-        margin-top: 50px;
-        margin-right: 55px;
+        margin: 2vw;
         display: inline-block;
-        margin-bottom: 100px;
+        margin-bottom: 10.5vh;
     }
 </style>

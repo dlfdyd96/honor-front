@@ -1,5 +1,5 @@
 <template>
-    <div id="main">
+    <div class="main">
         <section>
             <table id="signup_box" frame=void>
                 <tr>
@@ -82,7 +82,7 @@
 </script>
 
 <style lang="scss" scoped>
-    #main{
+    .main{
         min-height: 100vh;
         height: calc(100vh-89px);
         background-color: rgb(233, 236, 241);

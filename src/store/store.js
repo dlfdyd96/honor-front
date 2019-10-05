@@ -9,6 +9,7 @@ export const store = new Vuex.Store({
         productMenu: 'A',
         isPanelOpen : false,
         selectedItem : 0,
+        selectedBoard: {},
         contributors : [
             {season:'2019 Fall 기부자', peoples: []},
             {season:'2019 Spring 기부자', peoples: []},
@@ -32,6 +33,7 @@ export const store = new Vuex.Store({
         articles : [],
         products : [],
         productsTypes: [],
+        
     },
     getters:{
         getPanelIs(state) {
@@ -67,6 +69,9 @@ export const store = new Vuex.Store({
         },
         getSelectedItem(state){
             return state.products[state.selectedItem];
+        },
+        getSelectedBoard(state){
+            return state.selectedBoard;
         },
     },
     mutations: {
@@ -161,6 +166,10 @@ export const store = new Vuex.Store({
         setSelectedItem(state, payload){
             state.selectedItem = payload.id - 1;
             console.log(state.selectedItem);
+        },
+        setSelectedBoard(state, payload){
+            state.selectedBoard = payload.give;
+            console.log("tqtqt "+state.selectedBoard.Title);
         },
     },
     actions : {

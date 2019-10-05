@@ -1,5 +1,5 @@
 <template>
-	<div id="main" :style=" { 'background-image': 'url(' + this.getRandomBackground + ')' } " >
+	<div class="main" :style=" { 'background-image': 'url(' + this.getRandomBackground + ')' } " >
 	</div>
 </template>
 
@@ -21,7 +21,7 @@ export default {
 </script>
 
 <style scoped>
-	#main {
+	.main {
 		background-position: center;
 		background-repeat: no-repeat;
 		background-size: cover;

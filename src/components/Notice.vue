@@ -1,5 +1,5 @@
 <template>
-    <div id='main'>
+    <div class='main'>
         <div class="wrap">
             <table class="noticeTable">
                 <thead class="table">
@@ -12,7 +12,11 @@
                     </tr>
                 </thead>
                 <tr class="noticelist" v-for="notice in this.getNotice" :key="notice.Title">
-                    <td>{{ notice.No }}</td><td>{{notice.Title}}</td><td>{{notice.Writer}}</td>
+                    <td>{{ notice.No }}</td>
+                    <router-link to="/bulletin" id="noticeTitle">
+                        <td @click="setSelectedBoard({ give : notice})">{{notice.Title}}</td>
+                    </router-link>
+                    <td>{{notice.Writer}}</td>
                     <td>{{notice.Date}}</td><td>{{notice.Hit}}</td>
                 </tr>
             </table>
@@ -25,7 +29,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters, mapActions, mapMutations } from 'vuex'
 
 export default {
     computed : {
@@ -41,7 +45,7 @@ export default {
 </script>
 
 <style scoped>
-    #main{
+    .main{
         margin: auto;
         display: table;
         min-height: 100vh;
@@ -77,22 +81,26 @@ export default {
         position: relative;
         margin: auto;
         text-align: center;
-        margin-top: 100px;
+        margin-top: 13vh;
     }
     .search_box{
         border: 1px solid black;
         background-color: transparent;
-        width: 22vw;
-        height: 5vh;
+        width: 25.4vw;
+        height: 5.7vh;
         font-size: 100%;
+        margin-right: 1.15vw;
     }
 
     .searchBtn{
         background-color: rgb(118,112,112);
             color: white;
             border: 1px solid black;
-            font-size: 1.3vw;
-            width: 13vw;
-            height: 5vh;
+            font-size: 1.45vw;
+            width: 13.7vw;
+            height: 5.8vh;
+    }
+    #noticeTitle{
+        cursor: pointer;
     }
 </style>

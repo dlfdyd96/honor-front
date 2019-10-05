@@ -1,5 +1,5 @@
 <template>
-    <div id='main'>
+    <div class='main'>
         <br><br><br><br><br>
         <section id='intro'>
             <p class="mainText">명예옷장 </p><p class="mainText" id="subMainText">은,</p>
@@ -75,7 +75,7 @@ export default {
         text-align: left;
     }
 
-    #main{
+    .main{
         min-height: 100vh;
         height: calc(100vh-89px);
 		background-color: rgb(233, 236, 241);
