@@ -12,14 +12,14 @@
                     </tr>
                 </thead>
                 <tr class="noticelist" v-for="(notice, index) in this.getNotice" :key="index">
-                    <td>{{ notice.No }}</td>
+                    <td>{{ notice.id }}</td>
                     <td @click="setSelectedBoard({ give : notice})">
                         <router-link to="/bulletin" id="noticeTitle">
                             {{notice.Title}}
                         </router-link>
                     </td>
                     <td>{{notice.Writer}}</td>
-                    <td>{{notice.Date}}</td><td>{{notice.Hit}}</td>
+                    <td>{{notice.createdAt}}</td><td>{{notice.Hit}}</td>
                 </tr>
             </table>
             <div class="search_line">
@@ -57,7 +57,7 @@ export default {
         display: table;
         min-height: 100vh;
         height: calc(100vh-89px);
-		background-color: rgb(233, 236, 241);
+        background-color: rgb(233, 236, 241);
     }
     .wrap{
         display: table-cell;
@@ -68,29 +68,32 @@ export default {
         position: relative;
         border-collapse: collapse;
         margin: auto;
-        width: 1036px;
+        width: 76vw;
         text-align: center;
         border-bottom: 2px solid rgb(128,128,128);
     }
     .table{
-        font-size: 22px;
+        font-size: 1.6vw;
         background-color: transparent;
     }
     .tableTitle{
         border-bottom: 2px solid rgb(128,128,128);
     }
     .noticelist{
-        height: 42px;
-        font-size: 20px;
+        height: 5.5vh;
+        font-size: 1.45vw;
         border-bottom: 1px solid rgb(128,128,128);
     }
     .search_line{
         position: relative;
         margin: auto;
         text-align: center;
+        display: table;
         margin-top: 13vh;
     }
     .search_box{
+        display: table-cell;
+        vertical-align: middle;
         border: 1px solid black;
         background-color: transparent;
         width: 25.4vw;
@@ -100,12 +103,14 @@ export default {
     }
 
     .searchBtn{
+        display: table-cell;
+        vertical-align: middle;
         background-color: rgb(118,112,112);
         color: white;
         border: 1px solid black;
         font-size: 1.45vw;
         width: 13.7vw;
-        height: 5.8vh;
+        height: 5.7vh;
     }
     #noticeTitle{
         cursor: pointer;

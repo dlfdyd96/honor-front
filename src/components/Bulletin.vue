@@ -15,7 +15,7 @@
 							<td>{{ getSelectedBoard.Writer }}</td>
 						</tr>
 						<tr><p>작성일</p>
-							<td>{{ getSelectedBoard.Date }}</td>
+							<td>{{ getSelectedBoard.createdAt }}</td>
 						</tr>
 						<tr><p>조회수</p>
 							<td>{{ getSelectedBoard.Hit }}</td>
@@ -23,17 +23,24 @@
 					</th>
 				</thead>
 			</table>
-			<div class="textarea">
-				{{getSelectedBoard.Contents}}
-			</div>
+			<viewer class="textarea"
+			:value="getSelectedBoard.Contents"
+			height="500px"
+			/>
 		</div>
 	</div>
 </template>
 
 <script>
 import {mapGetters, mapActions} from 'vuex'
+import 'tui-editor/dist/tui-editor-contents.css';
+import 'highlight.js/styles/github.css';
+import Viewer from '@toast-ui/vue-editor/src/Viewer.vue'
 
 export default {
+	components: {
+        Viewer
+    },
 	computed : {
 		...mapGetters(['getSelectedBoard'])
 	},

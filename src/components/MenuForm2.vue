@@ -13,7 +13,7 @@
 					</span>
 					<transition name="fade">
 						<div v-show="inst_hover">
-							<ul class="introCategoryList">
+							<ul class="CategoryList">
 								<li class="submenu"><router-link to="/planmodel">기획의도</router-link></li>
 								<li class="submenu"><router-link to="/bm">비즈니스 모델</router-link></li>
 								<li class="submenu"><router-link to="/contributor">기부자 명단</router-link></li>
@@ -23,7 +23,21 @@
 					</transition>
 				</div>
 			</li>
-			<li><router-link to="/collection">컬렉션</router-link></li>
+			<li><div class="collectionCategory" @mouseover="collect_hovering" @mouseout="collect_hovering">
+					<span >
+						컬렉션
+					</span>
+					<transition name="fade">
+						<div v-show="collect_hover">
+							<ul class="CategoryList">
+								<li class="submenu"><router-link to="/collection">2019 Fall</router-link></li>
+								<li class="submenu"><router-link to="/collection">2019 Spring</router-link></li>
+								<li class="submenu"><router-link to="/collection">2018 Fall</router-link></li>
+							</ul>
+						</div>
+					</transition>
+				</div>
+			</li>
 			<li><router-link to="/product">상품</router-link></li>
 			<li>
 				<div class="behindCategory" @mouseover="behind_hovering" @mouseout="behind_hovering">
@@ -32,7 +46,7 @@
 					</span>
 					<transition name="fade">
 						<div v-show="behind_hover">
-							<ul class="behindCategoryList">
+							<ul class="CategoryList">
 								<li class="submenu"><router-link to="/fall19">2019 Fall</router-link></li>
 								<li class="submenu"><router-link to="/spring19">2019 Spring</router-link></li>
 								<li class="submenu"><router-link to="/fall18">2018 Fall</router-link></li>
@@ -47,11 +61,14 @@
 		</ul>
 	</Sidebar>
 	
-	<span class="loginContainer"> <router-link to="/login"><i class="fas fa-user loginBtn"></i> </router-link></span>
+	<span class="loginContainer">
+		<router-link v-if="this.$store.state.loginStatus == null" to="/login"><i class="fas fa-user loginBtn"></i> </router-link>
+		<router-link v-else to="/mypage"><i class="fas fa-user loginBtn"></i> </router-link>
+	</span>
 	<span class="homeContainer"> <router-link to="/"><i class="fas fa-home homeBtn"></i> </router-link></span>
 	<span class="snsContainer"> 
-		<a href="http://www.instagram.com"><i class="fab fa-instagram instaBtn"></i></a>
-		<a href="http://www.youtube.com"><i class="fab fa-youtube youtubeBtn"></i></a>
+		<a href="https://www.instagram.com/honors.closet/"><i class="fab fa-instagram instaBtn"></i></a>
+		<a href="https://www.youtube.com/channel/UCr52suELwXnTMQ0DfoK3x9g"><i class="fab fa-youtube youtubeBtn"></i></a>
 	</span>
 </div>
 </template>
@@ -63,6 +80,7 @@ import { mapGetters, mapMutations } from 'vuex'
 export default {
 	data() {
 		return {
+			collect_hover:false,
 			inst_hover : false,
 			behind_hover : false,
 		}
@@ -86,6 +104,9 @@ export default {
 		behind_hovering(){
 			this.behind_hover = !this.behind_hover;
 		},
+		collect_hovering(){
+			this.collect_hover = !this.collect_hover;
+		}
 	}
 }
 </script>
@@ -173,10 +194,16 @@ a {
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
 }
-.introCategoryList {
+.CategoryList {
 	margin-left: 30px;
 }
-.behindCategoryList {
-	margin-left: 30px;
+span{
+	color: black;
+}
+@media(max-width:600px){
+	li{
+		font-size: 5vw;
+		font-weight: bold;
+	}
 }
 </style>

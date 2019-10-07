@@ -82,5 +82,7 @@ export default {
 
 .modal-default-button {
   float: right;
+  border-bottom: 20px;
+  background-color :rgba(0, 0, 0, .5);
 }
 </style>

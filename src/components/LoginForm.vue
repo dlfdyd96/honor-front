@@ -6,11 +6,24 @@
                 <ul id="input_button">
                     <li id="id_pass">
                         <ul>
-                            <li id="login_id"><input type="text" placeholder="  id" class="textbox"></li>
-                            <li id="login_pwd"><input type="password" placeholder="  pwd" class="textbox"></li>
+                            <li id="login_id"><input type="text" placeholder="  id" class="textbox" v-model="userInfo.email"></li>
+                            <li id="login_pwd"><input type="password" placeholder="  pwd" class="textbox" v-model="userInfo.password"></li>
                         </ul>
                     </li>
-                    <li id="login_btn"><button>로그인</button></li>
+                    <li id="login_btn"><button @click="onLogin">로그인</button></li>
+                    
+                    <modal v-if="showModal" @close="showModal = false"><!--
+                        you can use custom content here to overwrite
+                        default content
+                        -->
+                        <h3 slot="header">로그인
+                            <i class="closeModalBtn fas fa-times" @click="showModal = false"></i>
+                        </h3>
+                        <div slot="body">
+                            아이디와 비밀번호를 확인 해주세요
+                        </div>
+                        <div slot="footer"></div>
+                    </modal>
                 </ul>
                 
                 
@@ -18,7 +31,7 @@
                 <ul id="btns">
                     <button id="kakaoBox">카카오계정으로 시작하기</button>
                     <li>
-                    <button id="id_search">아이디/비밀번호 찾기 ></button>
+                    <router-link tag="button" id="id_search" to="/findinfo">아이디/비밀번호 찾기 ></router-link>
                     <router-link id="join_btn" tag="button" to="/join">회원가입 ></router-link>
                     </li>
                 </ul>
@@ -28,9 +41,43 @@
 </template>
 
 <script>
-    export default {
-        
-    }
+import {mapActions} from 'vuex'
+import Modal from './commons/Modal'
+
+export default {
+    data() {
+        return {
+            userInfo : {
+                email : "",
+                password : "",
+            }, 
+            showModal: false,
+        }
+    },
+    components : {
+        Modal,
+    },
+    methods : {
+        ...mapActions(['login']),
+        onLogin(){
+            this.$store.dispatch('login', this.userInfo)
+            .then(()=>{
+                if(this.$store.state.loginStatus=="YES")
+                    this.$router.push('/')
+                else{
+                    this.showModal = true;
+                    console.log("login fail retry");
+                    //modal 표시
+                }
+            })
+            .catch((response) => {
+                
+                this.showModal = true;
+                console.log('request fail')
+            })
+        }
+    },
+}
 </script>
 
 <style scoped>
@@ -46,6 +93,7 @@
     }
     #title{
         font-size: 3.52vw;
+        color: black;
     }
     li{
         list-style: none;
@@ -57,6 +105,8 @@
         border: 1px solid;
         width: 16.1vw;
         height: 4.7vh;
+        text-align: center;
+        font-size: 100%;
     }
 
     #login_box{
@@ -125,4 +175,8 @@
         cursor: pointer;
     }
     
+    .closeModalBtn{
+        float: right;
+        color: #42b983;
+    }
 </style>

@@ -45,7 +45,6 @@ export default {
         left: 0;
         cursor: pointer;
     }
-
     .sidebar-panel {
         overflow-y: auto;
         background-color: rgba(255,255,255,0.5);
@@ -56,5 +55,10 @@ export default {
         z-index: 999;
         padding: 3rem 20px 2rem 20px;
         width: 12.5vw;
+    }
+    @media(max-width:600px){
+        .sidebar-panel {
+            width: 40vw;
+        }
     }
 </style>

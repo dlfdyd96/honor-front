@@ -1,7 +1,6 @@
 <template>
     <div>
         <div id="article_option">
-            <a>{{ articleNum }}건 기사</a>
             <table id='labels'>
                 <tr>
                     <td class="inactive" v-for="(label,index) in MenuObj" v-bind:key="index">
@@ -13,6 +12,7 @@
                 </tr>
             </table>
         </div>
+        <p id="articleNum">{{ articleNum }}건 기사</p>
         <ArticleList></ArticleList>
         <div class="search_line">
             <input type="text" class="search_box">
@@ -104,9 +104,12 @@ export default {
         position: relative;
         margin: auto;
         text-align: center;
+        display: table;
         margin-top: 13vh;
     }
     .search_box{
+        display: table-cell;
+        vertical-align: middle;
         border: 1px solid black;
         background-color: transparent;
         width: 25.4vw;
@@ -116,14 +119,20 @@ export default {
     }
 
     .searchBtn{
+        display: table-cell;
+        vertical-align: middle;
         background-color: rgb(118,112,112);
-            color: white;
-            border: 1px solid black;
-            font-size: 1.45vw;
-            width: 13.7vw;
-            height: 5.8vh;
+        color: white;
+        border: 1px solid black;
+        font-size: 1.45vw;
+        width: 13.7vw;
+        height: 5.7vh;
     }
     #noticeTitle{
         cursor: pointer;
+    }
+    #articleNum{
+        font-size: 1.4vw;
+        margin-left: 10vw;
     }
 </style>

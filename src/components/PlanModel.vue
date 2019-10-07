@@ -1,6 +1,5 @@
 <template>
     <div class='main'>
-        <br><br><br><br><br>
         <section id='intro'>
             <p class="mainText">명예옷장 </p><p class="mainText" id="subMainText">은,</p>
             <br><br><br>
@@ -17,15 +16,10 @@
         </section>
         <section id="mean">
             <p class="subText">묵혀둔 자원의 활용,</p>
-            <br><br>
             <p>잘 사용하였지만, 지금은 필요 없는 잉여 물품을 묵혀두지 말고 필요한 사람에게 제공</p>
-            <br><br><br>
             <p class="subText">스승과 제자의 교류</p>
-            <br><br>
             <p>지식뿐만 아니라 마음을 헤아려 가치를 나눌 수 있는 훈훈한 기회</p>
-            <br><br><br>
             <p class="subText">의미의 시대,</p>
-            <br><br>
             <p>유형의 교류를 통해 무형의 가치를 함께 하는 의미의 시대를 공감</p>
             <br>
         </section>
@@ -44,48 +38,88 @@ export default {
         font-family: 'Nanum Myeongjo';
         src: url(//fonts.googleapis.com/earlyaccess/nanummyeongjo.css);
     }
+    
     .mainText{
         font-family: 'Nanum Myeongjo';
         font: bold;
         display: inline;
         color: rgb(202, 143, 10);
-        font-size: 3vw;
     }
     #subMainText{
         color: rgb(105,105,105);
-        font-size: 2.62vw;
     }
     .subText{
         font-family: 'Nanum Myeongjo';
-        font: bold;
-        font-size: 2.65vw;
-    }
-    img{
-        width: 40vw;
-        height: 18vw;
-    }
-    p{
-        font-size: 1.5vw;
-    }
-
-    section{
-        position: relative;
-        left: 20%;
-        width: 60%;
-        text-align: left;
-    }
-
-    .main{
-        min-height: 100vh;
-        height: calc(100vh-89px);
-		background-color: rgb(233, 236, 241);
+        font-weight: bold;
     }
 
     #intro{
         text-align: center;
+        padding-top: 10vw;
     }
-    #mean{
-        margin-top: 18.9vh;
-        padding-bottom: 18.9vh;
+    @media(max-width:600px){
+        .main{
+            margin-right: 10px;
+            margin-left: 10px;
+        }
+        .mainText{
+            font-size: 9vw;
+        }
+        #subMainText{
+            font-size: 8vw;
+        }
+        img{
+            width: 80vw;
+            height: 30vw;
+        }
+        #mean{
+            text-align: left;
+            padding-bottom: 10vw;
+        }
+        .subText{
+            padding-bottom: 3vw;
+            padding-top: 8vw;
+        }
+    }
+    @media(min-width:601px){
+        .main{
+            width: 100vw;
+            margin: auto;
+            text-align: center;
+        }
+        .mainText{
+            font-size: 3vw;
+        }
+        #subMainText{
+            font-size: 2.62vw;
+        }
+        .subText{
+            font-size: 2.65vw;
+            padding-bottom: 5vw;
+            padding-top: 10vw;
+        }
+        img{
+            width: 40vw;
+            height: 17vw;
+        }
+        p{
+            font-size: 1.5vw;
+        }
+
+        section{
+            text-align: left;
+        }
+
+        .main{
+            min-height: 100vh;
+            height: calc(100vh-89px);
+            background-color: rgb(233, 236, 241);
+        }
+
+        #mean{
+            padding-bottom: 145px;
+            margin-left: 20%;
+            margin-right: 20%;
+        }
     }
 </style>

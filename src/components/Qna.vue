@@ -11,13 +11,13 @@
                     </tr>
                 </thead>
                 <tr class="qnalist" v-for="(qna, index) in this.getQna" :key="index">
-                    <td>{{ qna.No }}</td>
+                    <td>{{ qna.id }}</td>
                     <td @click="setSelectedBoard({ give : qna})">
                         <router-link to="/bulletin" id="qnaTitle">
                         {{qna.Title}}
                         </router-link>
                     </td>
-                    <td>{{qna.Date}}</td>
+                    <td>{{qna.createdAt}}</td>
                     <td>{{qna.Writer}}</td>
                 </tr>
             </table>
@@ -85,12 +85,15 @@ export default {
     }
 
     .search_line{
+        position: relative;
         margin: auto;
         text-align: center;
+        display: table;
         margin-top: 13vh;
     }
-
     .search_box{
+        display: table-cell;
+        vertical-align: middle;
         border: 1px solid black;
         background-color: transparent;
         width: 25.4vw;
@@ -100,12 +103,14 @@ export default {
     }
 
     .searchBtn{
+        display: table-cell;
+        vertical-align: middle;
         background-color: rgb(118,112,112);
         color: white;
         border: 1px solid black;
         font-size: 1.45vw;
         width: 13.7vw;
-        height: 5.8vh;
+        height: 5.7vh;
     }
     #qnaTitle{
         cursor: pointer;

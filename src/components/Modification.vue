@@ -1,6 +1,6 @@
 <template>
     <div id="join">
-        <!-- <div id="joinform">
+        <div id="joinform">
             <table id="signup_box" frame=void>
                 <tr>
                     <td class="category">회원구분</td>
@@ -8,12 +8,12 @@
                 </tr>
                 <tr>
                     <td class="category">아이디</td>
-                    <td class="answer"><input type="text" size="35" name="userid" placeholder="아이디" v-model="userInfo.E_mail">
+                    <td class="answer"><input type="text" size="35" name="userid" placeholder="아이디">
                     <button class="idCheckBtn">아이디 중복확인 ></button><i>(영문소문자/숫자, 4~6자)</i></td>
                 </tr>
                 <tr>
                     <td class="category">비밀번호</td>
-                    <td class="answer"><input type="password" size="35" name="userpw" placeholder="비밀번호" v-model="userInfo.Password"></td>
+                    <td class="answer"><input type="password" size="35" name="userpw" placeholder="비밀번호"></td>
                 </tr>
                 <tr>
                     <td class="category">비밀번호 확인</td>
@@ -22,7 +22,7 @@
                 
                 <tr>
                     <td class="category">이름</td>
-                    <td class="answer"><input type="text" size="35" name="name" placeholder="이름" v-model="userInfo.Name"></td>
+                    <td class="answer"><input type="text" size="35" name="name" placeholder="이름"></td>
                 </tr>
                 <tr>
                     <td class="category">휴대전화</td>
@@ -54,23 +54,17 @@
                 </tr>
             </table>
             <div id="btns">
-                <router-link to="/complete" tag="button" id="sign_up_btn"><button @click="singUp(userInfo)">확인</button></router-link>
+                <router-link to="/withdraw" tag="button" id="withdraw">회원 탈퇴하기 ></router-link>
+                <router-link to="/mypage" tag="button" id="modifyBtn">수정완료</router-link>
             </div>
-        </div> -->
-        glgl
+        </div>
     </div>
 </template>
 
 <script>
-import {mapActions} from 'vuex'
     export default {
         data(){
             return{
-                userInfo : {    //내용 더 추가할 것.
-                    E_mail:"", 
-                    Name:"", 
-                    Password:"",
-                },
                 Email: "",
                 Emails: [
                     {value:'', name: '직접입력'},
@@ -85,13 +79,28 @@ import {mapActions} from 'vuex'
         methods:{
             InputEmail: function(e){
                 this.Email = e.target.value;
-            },
-            ...mapActions(['singUp'])
+            }
         }
     }
 </script>
 
 <style scoped>
+    #withdraw{
+        font-size: 1vw;
+        width: 12vw;
+        height: 35px;
+        background-color: rgb(118,112,112);
+        color: white;
+        margin: 1vw;
+    }
+    #modifyBtn{
+        font-size: 1vw;
+        width: 12vw;
+        height: 35px;
+        background-color: rgb(118,112,112);
+        color: white;
+        margin: 1vw;
+    }
     #join{
         min-height: 100vh;
         height: calc(100vh-89px);
@@ -105,13 +114,6 @@ import {mapActions} from 'vuex'
     #btns{
         padding-top: 10vh;
         text-align: center;
-    }
-    #sign_up_btn{
-        font-size: 1.45vw;
-        width: 13.75vw;
-        height: 44px;
-        background-color: rgb(118,112,112);
-        color: white;
     }
     .joinForm{
         display: table;

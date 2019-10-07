@@ -1,6 +1,6 @@
 <template>
     <div id="join">
-        <!-- <div id="joinform">
+        <div id="joinform">
             <table id="signup_box" frame=void>
                 <tr>
                     <td class="category">회원구분</td>
@@ -53,42 +53,71 @@
                     </td>
                 </tr>
             </table>
-            <div id="btns">
-                <router-link to="/complete" tag="button" id="sign_up_btn"><button @click="singUp(userInfo)">확인</button></router-link>
+            <div id="btns" >
+                <!--<router-link to="/complete" tag="button" id="sign_up_btn" @click.native="onsignUp">확인</router-link> -->
+                <button id="sign_up_btn" @click="onsignUp">확인</button>
+                <modal v-if="showModal" @close="showModal = false"><!--
+                    you can use custom content here to overwrite
+                    default content
+                    -->
+                    <h3 slot="header">알림!</h3>
+                    <div slot="body">
+                        아이디가 겹칩니다.
+                    </div>
+                </modal>
             </div>
-        </div> -->
-        glgl
+        </div>
     </div>
 </template>
 
 <script>
 import {mapActions} from 'vuex'
-    export default {
-        data(){
-            return{
-                userInfo : {    //내용 더 추가할 것.
-                    E_mail:"", 
-                    Name:"", 
-                    Password:"",
-                },
-                Email: "",
-                Emails: [
-                    {value:'', name: '직접입력'},
-                    {value:'kumoh.ac.kr', name:'kumoh.ac.kr'},
-                    {value:'naver.com', name:'naver.com'},
-                    {value:'hanmail.net', name:'hanmail.net'},
-                    {value:'gmail.com', name:'gmail.com'},
-                ],
-                Numbers:['010', '011']
-            }
-        },
-        methods:{
-            InputEmail: function(e){
-                this.Email = e.target.value;
+import Modal from './commons/Modal'
+export default {
+    data(){
+        return{
+            userInfo : {    //내용 더 추가할 것.
+                E_mail:"", 
+                Name:"", 
+                Password:"",
             },
-            ...mapActions(['singUp'])
+            Email: "",
+            Emails: [
+                {value:'', name: '직접입력'},
+                {value:'kumoh.ac.kr', name:'kumoh.ac.kr'},
+                {value:'naver.com', name:'naver.com'},
+                {value:'hanmail.net', name:'hanmail.net'},
+                {value:'gmail.com', name:'gmail.com'},
+            ],
+            Numbers:['010', '011'],
+            showModal: false,
+        }
+    },
+    components : {
+        Modal,
+    },
+    methods:{
+        InputEmail: function(e){
+            this.Email = e.target.value;
+        },
+        onsignUp() {
+            this.$store.dispatch('signUp', this.userInfo)
+            .then(()=>{
+                if(this.$store.state.joinStatus =="ALREADY")
+                {
+                    //modal 추가    
+                    this.showModal = true
+                    console.log("id is Already. please retry")
+                } else if(this.$store.state.joinStatus =="SUCCESS"){
+                    this.$router.push('/complete')
+                }
+            })
+            .catch((response) => {
+                console.log('request fail')
+            })
         }
     }
+}
 </script>
 
 <style scoped>
