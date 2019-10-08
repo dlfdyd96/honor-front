@@ -11,16 +11,19 @@
                     </tr>
                 </thead>
                 <tr class="qnalist" v-for="(qna, index) in this.getQna" :key="index">
-                    <td>{{ qna.id }}</td>
+                    <td>{{ qna.No }}</td>
                     <td @click="setSelectedBoard({ give : qna})">
                         <router-link to="/bulletin" id="qnaTitle">
                         {{qna.Title}}
                         </router-link>
                     </td>
-                    <td>{{qna.createdAt}}</td>
+                    <td>{{qna.createdAt.substring(0, 8)}}</td>
                     <td>{{qna.Writer}}</td>
                 </tr>
             </table>
+            <div class="write">
+                <router-link to="/createqna" tag='button' id="createQnA">글쓰기</router-link>
+            </div>
             <div class="search_line">
                 <input type="text" class="search_box">
                 <button class="searchBtn">검색</button>
@@ -113,6 +116,19 @@ export default {
         height: 5.7vh;
     }
     #qnaTitle{
+        cursor: pointer;
+    }
+    .write{
+        padding-left: 60vw;
+        padding-top: 5vh;
+    }
+    #createQnA{
+        background-color: rgb(118,112,112);
+        color: white;
+        border: 1px solid black;
+        font-size: 1.45vw;
+        width: 10vw;
+        height: 5vh;
         cursor: pointer;
     }
 </style>

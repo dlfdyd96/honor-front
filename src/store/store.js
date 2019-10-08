@@ -52,6 +52,8 @@ export const store = new Vuex.Store({
         myCartList : [],
         myLikeList : [],
         titlemyitem: "",
+        behindcut: [],
+        behind: [],
     },
     getters:{
         getPanelIs(state) {
@@ -105,6 +107,22 @@ export const store = new Vuex.Store({
         },
         getTitleMyitem(state){
             return state.titlemyitem;
+        },
+        get19SpringBehind(state){
+            state.behind = [];
+            for(let i = 0 ; i < state.behindcut.length ; i++){
+                if(state.behindcut[i].Season == "19-1")
+                    state.behind.push(state.behindcut[i])
+            }
+            return state.behind;
+        },
+        get18FallBehind(state){
+            state.behind = [];
+            for(let i = 0 ; i < state.behindcut.length ; i++){
+                if(state.behindcut[i].Season == "18-3")
+                    state.behind.push(state.behindcut[i])
+            }
+            return state.behind;
         }
     },
     mutations: {
@@ -113,7 +131,7 @@ export const store = new Vuex.Store({
         },
         setBackground(state){
             //console.log(state.main_background);
-            state.main_background = 'http://202.31.202.253:5000/assets/image/2019_fall_mainpage' + (Math.floor(Math.random() * (5 - 1)) + 1) + '.jpg';
+            state.main_background = 'http://202.31.202.253:5000/assets/image/2019_fall_mainpage' + (Math.floor(Math.random() * (5 - 1)) + 1) + '.jpg';  //1~4 랜덤
         },
         setContributors(state, data){
             this.state.temp = data;
@@ -245,18 +263,9 @@ export const store = new Vuex.Store({
         },
         setMembers(state, payload){
             state.members = [
-                {
-                    Season:"2019 Fall 멤버",
-                    Peoples: []
-                },
-                {
-                    Season:"2019 Spring 멤버",
-                    Peoples: []
-                },
-                {
-                    Season:"2018 Fall 멤버",
-                    Peoples: []
-                },
+                { Season:"2019 Fall 멤버", Peoples: [] },
+                { Season:"2019 Spring 멤버", Peoples: [] },
+                { Season:"2018 Fall 멤버", Peoples: [] },
             ];
             for(let i = 0 ; i < payload.length ; i++){
                 if(payload[i].Season == "18-3"){
@@ -267,7 +276,13 @@ export const store = new Vuex.Store({
                     state.members[0].Peoples.push(payload[i]);
                 }
             }
-        }
+        },
+        setBehind(state, payload){
+            state.behindcut = [];
+            for(let i = 0 ; i < payload.length ; i++){
+                state.behindcut.push(payload[i]);
+            }
+        },
     },
     actions : {
         getContributorsServer(context){
@@ -365,6 +380,18 @@ export const store = new Vuex.Store({
                 console.log(response)
             });
         },
+        getBehindServer(context){
+            console.log('request success ');
+            axios.get('http://202.31.202.253:5000/behindimage')
+            .then((response) => {
+                this.commit('setBehind', response.data);
+                console.log('Behind request success ' + response);
+              })
+            .catch(response => {
+                console.log('Behind Request Fail');
+                console.log(response)
+            });
+        },
 
 
 
@@ -453,6 +480,19 @@ export const store = new Vuex.Store({
                 console.log(response)
             });
         },
+        setUnCartListServer(context, {userId, Itemid}){
+            console.log(userId + Itemid);
+            return axios.delete('http://202.31.202.253:5000/customer/'+ userId  +'/uncart/', {Itemid})
+            .then((response) => {
+                //this.commit('setCartList', response.data); 갱신해줄 필요 없음. 없나?
+                //this.dispatch('getCartServer', {userId});// 장바구니 상품 받아옴
+                console.log('set uncart list Request success : ' + response.data);
+            })
+            .catch(response => {
+                console.log('Set unCart List Request Fail');
+                console.log(response)
+            });
+        },
         setLikeListServer(context, {userId, Itemid}){
             console.log(userId + Itemid);
             return axios.post('http://202.31.202.253:5000/customer/'+ userId  +'/like/', {Itemid})
@@ -463,6 +503,19 @@ export const store = new Vuex.Store({
             })
             .catch(response => {
                 console.log('Set like List Request Fail');
+                console.log(response)
+            });
+        },
+        setUnLikeListServer(context, {userId, Itemid}){
+            console.log(userId + Itemid);
+            return axios.delete('http://202.31.202.253:5000/customer/'+ userId  +'/unlike/', {Itemid})
+            .then((response) => {
+                //this.commit('setCartList', response.data); 갱신해줄 필요 없음. 없나?
+                //this.dispatch('getCartServer', {userId});// 장바구니 상품 받아옴
+                console.log('set unlike list Request success : ' + response.data);
+            })
+            .catch(response => {
+                console.log('Set unlike List Request Fail');
                 console.log(response)
             });
         },

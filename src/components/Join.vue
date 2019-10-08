@@ -168,7 +168,6 @@ export default {
     button{
         width: 8.65vw;
         height: 3.3vh;
-        border: 1px solid;
         font-size: 0.89vw;
         background-color: transparent;
     }

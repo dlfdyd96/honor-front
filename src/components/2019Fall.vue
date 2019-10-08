@@ -2,7 +2,7 @@
     <div class='main'>
         <div class="container">
             <video v-bind:src='Video' autoplay controls loop></video>
-            <Photo></Photo>
+            <!--<Photo></Photo>-->
         </div>
     </div>
 </template>

@@ -1,9 +1,5 @@
 <template>
-    <div class="main">
-        <div class="list" v-for="(item,index) in Items" v-bind:key="index">
-            <img :src= "item.Picture" >
-        </div>
-    </div>
+    
 </template>
 
 <script>

@@ -8,7 +8,7 @@
                     <td id="titleitem">{{getTitleMyitem}}</td>
                 </tr>
                 <tr class="itemLine" v-for="(item,index) in getMyItemList" :key="index">
-                    <td id="itemnum"><!--{{item.num}}-->{{ item.id }}</td>
+                    <td id="itemnum"><!--{{item.num}}-->{{ index + 1 }}</td>
                     <td id="itemimg"><img :src="item.Thumbnail" class="Img"/></td>
                     <router-link to="/product/detail" tag="td" id="itemname" @click.native="setSelectedItem( item )">
                     {{item.Info}}

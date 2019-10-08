@@ -30,6 +30,8 @@ import MyItemList from '@/components/MyItemList'
 import Modification from '@/components/Modification'
 import Withdraw from '@/components/Withdraw'
 import CompleteWithdraw from '@/components/CompleteWithdraw'
+import CreateQnA from '@/components/CreateQnA'
+
 Vue.use(Router)
 
 export default new Router({
@@ -181,6 +183,11 @@ export default new Router({
       path: '/completeWithdraw',
       name: 'CompleteWithdraw',
       component: CompleteWithdraw
+    },
+    {
+      path: '/createqna',
+      name: 'CreateQnA',
+      component: CreateQnA
     }
   ]
 })

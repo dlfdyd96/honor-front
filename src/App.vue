@@ -10,6 +10,7 @@
 
 <script>
 import MenuForm2 from '@/components/MenuForm2'
+
 export default {
   components: {
     MenuForm2,
@@ -52,7 +53,9 @@ export default {
 }
 
 
-
+button{
+  border: none;
+}
 .slide-fade-enter-active {
   transition: all .6s ease;
 }
@@ -63,5 +66,11 @@ export default {
 /* .slide-fade-leave-active below version 2.1.8 */ {
   transform: translateX(10px);
   opacity: 0;
+}
+#team{
+  position: fixed;
+  padding-top: 50px;
+  padding-left: 96vw;
+  font-size: 50px;
 }
 </style>
